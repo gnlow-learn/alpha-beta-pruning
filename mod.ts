@@ -1,4 +1,4 @@
-type Tree<T> = (T | Tree<T>)[]
+type Tree<T> = T[] | Tree<T>[]
 
 const max =
 ([head, ...tail]: Tree<number>): number => {
@@ -8,7 +8,7 @@ const max =
         typeof head == "number"
             ? head
             : min(head),
-        max(tail),
+        max(tail as Tree<number>),
     )
 }
 
@@ -20,7 +20,7 @@ const min =
         typeof head == "number"
             ? head
             : max(head),
-            min(tail),
+            min(tail as Tree<number>),
         )
 }
 
