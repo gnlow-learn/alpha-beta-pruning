@@ -2,7 +2,7 @@ type Tree<T> = T[] | Tree<T>[]
 
 const max =
 ([head, ...tail]: Tree<number>): number => {
-    if (!head) return -1
+    if (!head) return -Infinity
 
     return Math.max(
         typeof head == "number"
@@ -14,7 +14,7 @@ const max =
 
 const min =
 ([head, ...tail]: Tree<number>): number => {
-    if (!head) return 99
+    if (!head) return Infinity
 
     return Math.min(
         typeof head == "number"
