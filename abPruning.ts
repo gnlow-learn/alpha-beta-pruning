@@ -1,33 +1,4 @@
 type Tree<T> = T[] | Tree<T>[]
-const tree: Tree<number> = [
-    [
-        [
-            [5, 6],
-            [7, 4, 5],
-        ],
-        [
-            [3],
-        ],
-    ],
-    [
-        [
-            [6],
-            [6, 9],
-        ],
-        [
-            [7],
-        ],
-    ],
-    [
-        [
-            [5],
-        ],
-        [
-            [9, 8],
-            [6],
-        ]
-    ],
-]
 
 const log =
 (depth: number, curr: number | string, alpha: number, beta: number) => {
@@ -42,7 +13,7 @@ const log =
         .padStart(2, " ")
 
     console.log(indent, curr)
-    console.log(indent, `[${alphaS} , ${betaS} ]`)
+    console.log(indent, `[${alphaS},${betaS} ]`)
 }
 
 const m =
@@ -82,5 +53,34 @@ const m =
         }
     }
 }
+
+const C = 2
+const tree: Tree<number> = [
+    [
+        [
+            [2, 7],
+            [9, 3],
+            [6, 7],
+        ],
+        [
+            [9, 7],
+            [4, 5, /* ? */],
+        ],
+    ],
+    [
+        [
+            [9, 2],
+            [C, 3],
+        ],
+        [
+            [3, 7],
+            [2, 3],
+        ],
+        [
+            [5, 6],
+            [8, 4],
+        ],
+    ],
+]
 
 console.log(m()(0, true)(tree))
