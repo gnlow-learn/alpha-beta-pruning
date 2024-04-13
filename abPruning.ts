@@ -43,26 +43,28 @@ const m =
         return tree
     } else {
         if (isMax) {
+            let max = -Infinity
             tree.forEach(x => {
-                alpha = Math.max(
-                    alpha,
-                    m(alpha, beta)(depth + 1, !isMax)(x),
-                )
+                const curr = m(alpha, beta)(depth + 1, !isMax)(x)
+
+                alpha = Math.max(alpha, curr)
+                max = Math.max(max, curr)
             })
-            console.log(" ".repeat((4-depth)*4), alpha, [alpha, beta])
-            //return alpha
+
+            console.log(" ".repeat((4-depth)*4), max, [alpha, beta])
+            return max
         } else {
+            let min = Infinity
             tree.forEach(x => {
-                beta = Math.min(
-                    beta,
-                    m(alpha, beta)(depth + 1, !isMax)(x),
-                )
+                const curr = m(alpha, beta)(depth + 1, !isMax)(x) 
+
+                beta = Math.min(beta, curr)
+                min = Math.min(min, curr)
             })
+
             console.log(" ".repeat((4-depth)*4), beta, [alpha, beta])
-            //return beta
+            return min
         }
-        
-        return isMax ? alpha : beta
     }
 }
 
